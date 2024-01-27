@@ -13,7 +13,7 @@ class CreateEquipmentTable extends Migration
      */
     public function up()
     {
-        Schema::create('equipment', function (Blueprint $table)
+        Schema::create('equipments', function (Blueprint $table)
         {
         //=======> Information
             $table->id();
@@ -30,7 +30,7 @@ class CreateEquipmentTable extends Migration
         //=======> Configs 
             $table->foreign('category_id')
                 ->references('id')
-                ->on('category')
+                ->on('categories')
                 ->onDelete('cascade');
     });
     }
