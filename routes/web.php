@@ -1,18 +1,24 @@
 <?php
 
+//-----> Dependencies 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+//-----> Controllers
+use App\Http\Controllers\WebController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+/*************************************************************/
+/******************** ROUTES *********************************/
+/*************************************************************/
+
+//=====> GET
+    Route::get('/', [WebController::class, 'home']);
+    Route::get('/proveedores', [WebController::class, 'get_providers']);
+    Route::get('/equipos', [WebController::class, 'get_equipments']);
+    Route::get('/proveedores/{id}', [WebController::class, 'get_provider']);
+    Route::get('/equipos/{id}', [WebController::class, 'get_equipment']);
+//=====> POST
+
+//=====> PUT
+    
+//=====> DELETE
