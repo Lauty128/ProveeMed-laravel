@@ -22,10 +22,10 @@ class CreateProvidersTable extends Migration
             $table->string('mail', 100)->nullable();
             $table->string('phone', 40)->nullable();
         //=======> Location
-            $table->string('province_id', 10);
-            $table->string('province', 50);
-            $table->string('city_id', 10);
-            $table->string('city', 50);
+            $table->string('province_id', 10)->nullable();
+            $table->string('province', 50)->nullable();
+            $table->string('city_id', 10)->nullable();
+            $table->string('city', 50)->nullable();
             $table->string('address', 100)->nullable();
         //=======> Others
             $table->timestamps();
