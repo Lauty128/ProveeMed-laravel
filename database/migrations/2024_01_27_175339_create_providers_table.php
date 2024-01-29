@@ -26,6 +26,7 @@ class CreateProvidersTable extends Migration
             $table->string('province', 50);
             $table->string('city_id', 10);
             $table->string('city', 50);
+            $table->string('department_id', 10);
             $table->string('address', 100)->nullable();
         //=======> Others
             $table->timestamps();

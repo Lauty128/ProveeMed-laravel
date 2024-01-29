@@ -20,7 +20,7 @@ class CreateCategoriesTable extends Migration
             $table->string('name', 40);
             $table->string('description', 150)->nullable();
         //=======> Others
-            $table->timestamp('created_at')->default(now());
+            $table->timestamp('created_at')->useCurrent();
         });
     }
 
