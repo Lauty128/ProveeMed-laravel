@@ -10,7 +10,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Category extends Model
 {
     use HasFactory;
-    protected $timestamps = false;
+    protected $table = 'categories';
+    public $timestamps = false;
+    protected $guarded = [];
 
     //----> Relations
     function equipments():HasMany

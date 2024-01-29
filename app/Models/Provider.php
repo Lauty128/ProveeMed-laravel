@@ -12,6 +12,9 @@ class Provider extends Model
 {
     use HasFactory;
 
+    protected $table = 'providers';
+
+
     //----> Relations
     public function equipments():BelongsToMany
     {
