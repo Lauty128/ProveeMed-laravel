@@ -11,12 +11,12 @@
     </title>
 </head>
 <body>
-    @component('components.menu') @endcomponent
+    @component('components.static.menu') @endcomponent
     
     <main>
         @yield('body')
     </main>
 
-    @component('components.footer') @endcomponent
+    @component('components.static.footer') @endcomponent
 </body>
 </html>
