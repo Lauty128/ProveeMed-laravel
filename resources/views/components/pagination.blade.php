@@ -3,9 +3,9 @@
         <a aria-page="{{ ($paginator->currentPage() - 1) }}"><</a>
     @endif
     
-    @for($i = 1; $i <= 2; $i++)
+    @for($i = 2; $i >= 1; $i--)
         @if(($paginator->currentPage() - $i) > 0)
-            <a aria-page="" >{{ $paginator->currentPage() - $i }}</a>
+            <a aria-page="{{ $paginator->currentPage() - $i }}">{{ $paginator->currentPage() - $i }}</a>
         @endif
     @endfor
 
@@ -13,12 +13,12 @@
     
     @for($i = 1; $i <= 2; $i++)
         @if(($paginator->currentPage() + $i) <= $paginator->lastPage())
-            <a aria-page="" >{{ $paginator->currentPage() + $i }}</a>
+            <a aria-page="{{ $paginator->currentPage() + $i }}">{{ $paginator->currentPage() + $i }}</a>
         @endif
     @endfor
     
     @if (!$paginator->onLastPage())
-        <a aria-page="" >></a>
+        <a aria-page="{{ $paginator->currentPage() + $i }}">></a>
     @endif
 
     <div class="CardsContainer__information">
