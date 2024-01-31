@@ -25,4 +25,12 @@ class WebController extends Controller
         // return response()->json($providers       );
         return view('providers', compact('providers'));
     }
+
+    public function equipments(Request $request)
+    {
+        $equipments = Equipment::paginate(15);
+
+        // return response()->json($equipments       );
+        return view('equipments', compact('equipments'));
+    }
 }
