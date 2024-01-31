@@ -4,11 +4,9 @@
 
 @section('body')
 
-
 <div class="DivisorComponent">
 
-    @component('components.providerFilters')
-        
+    @component('components.providerFilters')    
     @endcomponent
 
     <div class="CardsContainer">
@@ -19,7 +17,7 @@
         </div>
 
 
-        @if ($providers)
+        @if ($providers->count() > 0)
             @foreach ($providers as $provider)
                 <div class="Card Card--provider">
                     <span class='Card__id'>{{ '#'.$provider->id }}</span>
@@ -29,19 +27,17 @@
                     </a>
                 </div>
             @endforeach   
-                <div class="CardsContainer__pagination">
-                    <a href="#"><</a>    
-                    <a href="#">1</a>    
-                    <a href="#">2</a>    
-                    <a href="#">3</a>    
-                    <a href="#">4</a>    
-                    <a href="#">></a>    
-                </div>       
+    
+            {{ $providers->links('components.pagination') }}
+                
         @else
-            
+            <div class="emptyList" style="display: flex; flex-direction:column; align-items:center; gap:1.5em">
+                <span style="margin-top: 3em; text-align: center; display:block">No se encontro ningun resultado</span>
+                <a href="{{ route('providers') }}">Restablecer</a>
+            </div>
         @endif
         
-        @endsection
-
     </div> 
 </div>
+
+@endsection
