@@ -100,20 +100,22 @@ main{
     align-items: center;
     gap: 1em;
     margin-right: 1em;
-    
+    position: relative;
 }
 .CardsContainer__pagination > a{
-    font-size: 1.5em;
+    font-size: 1.2em;
     cursor: pointer;
     background-color: #5780ab;
     text-decoration: none;
     color: #fff;
     padding: 2px 8px;
-    border-radius: 5px;
-    
+    border-radius: 5px;   
 }
-.CardsContainer__pagination > a:hover{
-    color: blue ;
+.CardsContainer__information{
+    position: absolute;
+    bottom: -1.8em;
+    right: 0;
+    color: #6e6e6e;
 }
 
 /* -------------------------- CARD */
