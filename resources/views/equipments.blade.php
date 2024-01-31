@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'ProveeMed | Proveedores')
+@section('title', 'ProveeMed | Equipos')
 
 @section('body')
 
