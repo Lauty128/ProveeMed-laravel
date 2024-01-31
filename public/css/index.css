@@ -50,10 +50,14 @@ main{
     background-color: var(--blue-light-color);    
 }
 .Menu__image{ width: 100px; border-radius: 10px }
+.Menu__nav{ display: flex; gap: 1.4em }
 .Menu__a{
     padding: 10px;
-    margin-right: 1em;
     text-decoration: none;
+    position: relative;
+    display: flex;
+    gap: 18px;
+    align-items: center;
     color: #fff;
     background-color: var(--blue-light-color);
     font-size: 1.1em;
@@ -61,6 +65,17 @@ main{
     text-transform: uppercase;
 
     transition: background-color .3s;
+}
+.Menu__a svg{ position: relative; z-index: 2; }
+.Menu__a::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 45px;
+    border-radius: 50%;
+    height: 100%;
+    background-color: var(--blue-color);
 }
 .Menu__a:hover{ background-color: #044c84 }
 
