@@ -1,5 +1,7 @@
+{{-- esto indica que nos vamos a centrar en el archivo layout.blade.php para generar este archivo --}}
 @extends('layout')
 
+{{-- Los section son para rellenar el contenido de las etiquetas @yield en el archivo layout.blade.php --}}
 @section('title', 'ProveeMed | Inicio')
 
 @section('body')

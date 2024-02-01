@@ -1,5 +1,7 @@
+{{-- esto indica que nos vamos a centrar en el archivo layout.blade.php para generar este archivo --}}
 @extends('layout')
 
+{{-- Los section son para rellenar el contenido de las etiquetas @yield en el archivo layout.blade.php --}}
 @section('title', 'ProveeMed | Equipos')
 
 @section('body')
@@ -28,6 +30,9 @@
                 </div>
             @endforeach   
     
+            {{-- este sistema tiene una comlejidad mas alta. Renderiza el codigo del archivo indicado --}}
+            {{-- el componente recibe una variable $paginator con algunas propiedades interesantes --}}
+            {{-- Aca el link: https://laravel.com/docs/10.x/pagination#paginator-instance-methods --}}
             {{ $equipments->links('components.pagination') }}
                 
         @else
