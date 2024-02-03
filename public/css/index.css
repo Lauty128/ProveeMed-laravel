@@ -52,32 +52,40 @@ main{
 .Menu__image{ width: 100px; border-radius: 10px }
 .Menu__nav{ display: flex; gap: 1.4em }
 .Menu__a{
-    padding: 10px;
+    padding: 12px;
     text-decoration: none;
     position: relative;
     display: flex;
-    gap: 18px;
+    gap: 13px;
     align-items: center;
     color: #fff;
     background-color: var(--blue-light-color);
     font-size: 1.1em;
     border-radius: 6px;
+    border: 1.5px solid #fff;
+    border-radius: 20px;
     text-transform: uppercase;
+    overflow: hidden;
 
-    transition: background-color .3s;
+    transition: background-color .4s;
 }
-.Menu__a svg{ position: relative; z-index: 2; }
+.Menu__a *{ position: relative; z-index: 2 }
 .Menu__a::after{
     content: '';
     position: absolute;
     top: 0;
     left: 0;
-    width: 45px;
-    border-radius: 50%;
+    width: 40px;
     height: 100%;
     background-color: var(--blue-color);
+    transform: scaleX(1);
+    transform-origin: left;
+    transition: transform .4s;
 }
-.Menu__a:hover{ background-color: #044c84 }
+.Menu__a:hover::after{
+    transform: scaleX(5);
+}
+/* .Menu__a:hover{ background-color: #044c84 } */
 
 .Footer{
     position: absolute;
