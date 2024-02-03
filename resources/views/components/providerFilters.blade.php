@@ -2,7 +2,7 @@
     <h3>🔎 Filtros</h3>
 
     <div class='FilterComponent__div'>
-        <label class='FilterComponent__label' for="word-input">Buscar</label>
+        <label class='FilterComponent__label' for="word-input">Nombre</label>
         <input class='FilterComponent__input' id='word-input' type="text" name='word' />
     </div>
     <div class='FilterComponent__div'>
