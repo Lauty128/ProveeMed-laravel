@@ -27,7 +27,7 @@
     <style>
         .Local-p{
             color: #505050; 
-            font-size: 1em;
+            font-size: 1.15em;
             max-width: 1100px;
         }
     </style>
