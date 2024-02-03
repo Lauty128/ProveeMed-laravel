@@ -105,6 +105,16 @@ main{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
+@media screen and (max-width:500px) {
+    .Menu__image{ width: 70px; }
+    .Menu__a{ 
+        padding: 8px 10px;
+        font-size: .8em;
+    }
+    .Menu__a::after{ width: 36px; }
+    .Menu__a svg{ width: 19px; }
+}
+
 /* ---------------------- LIST  COMPONENTS ------------------------------------ */
 
 .DivisorComponent{
@@ -115,6 +125,7 @@ main{
     padding: .3em;
     margin-bottom: 3em;
 }
+
 
 .CardsContainer{ padding-left: 1em; border-left: 1.5px solid rgb(66, 66, 66)v}
 .CardsContainer__pagination{
@@ -141,6 +152,16 @@ main{
     color: #6e6e6e;
 }
 
+@media screen and (max-width:840px) {
+    .DivisorComponent{
+        grid-template-columns: 1fr;
+        padding: 0;
+    }
+    .CardsContainer{ padding: 0 }
+    .CardsContainer__pagination{ margin-bottom: 2em }
+
+}
+
 /* -------------------------- CARD */
 .Card{
     border: 1px solid #b9b9b9;
@@ -150,11 +171,15 @@ main{
     display: grid;
     align-items: center;
     justify-content: space-between;
-    grid-template-columns: 82% 18%;
+    grid-template-columns: calc(78% - 1em) 22%;
     gap: 1em;
     position: relative;
+    text-decoration: none;
     
+    transition: background-color .3s;
 }
+.Card:hover{ background-color: #f1f1f1 }
+.Card:hover .Card__h4{ color: #044c84; }
 .Card__h4{
     padding-top: 15px;
     margin: .5em .2em;
@@ -162,6 +187,14 @@ main{
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    color: #000000;
+    transition: color .3s;
+}
+.Card__span{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #000000;
 }
 .Card__id{
     position: absolute;
@@ -205,13 +238,14 @@ main{
 }
 
 .FilterComponent{
-    padding-right: 1em;
+    padding: 1em;
     position: sticky;
     top: .2em;
     height: fit-content;
-    
+    background-color: #f0f0f0;
     
 }
+.FilterComponent h3{ margin-top: 0; }
 .FilterComponent__div{
     margin-top: 1em;
     width: 100%;
@@ -239,8 +273,6 @@ main{
     color: #fff;
     cursor: pointer;
     transition: background-color .2s, color .2s;
-    
 }
-.FilterComponent__submit:hover{
-    color: #000000;
-}
+.FilterComponent__submit--reset{ background-color: #6e6e6e; }
+
