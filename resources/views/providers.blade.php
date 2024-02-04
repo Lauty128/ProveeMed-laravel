@@ -6,6 +6,19 @@
 
 <div class="DivisorComponent">
 
+    <div class="DivisorComponent__header">
+        <span><b>{{ $providers->total() }}</b> Resultados</span>
+        <div class="DivisorComponent__order">
+            <span>Ordenar por </span>
+            <select name="sort" id="sort-input">
+                <option value="1">Codigo: menor a mayor</option>
+                <option value="2">Codigo: mayor a menor</option>
+                <option value="3">Ordenar de A a Z (asc)</option>
+                <option value="4">Ordenar de Z a A (desc)</option>
+            </select>
+        </div>
+    </div>
+
     @component('components.providerFilters', [
         'categories' => $categories,
         'provinces' => $provinces

@@ -125,7 +125,25 @@ main{
     padding: .3em;
     margin-bottom: 3em;
 }
-
+.DivisorComponent__header{
+    grid-column: 2 span;
+    margin-bottom: 1em;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+}
+.DivisorComponent__header > span{
+    font-size: 1.2em;
+}
+.DivisorComponent__header > span b{ color: #044c84; }
+.DivisorComponent__order select{
+    padding: .5em .5em .5em .2em;
+    border: none;
+    font-size: 1em;
+    margin-left: .3em;
+}
 
 .CardsContainer{ padding-left: 1em; border-left: 1.5px solid rgb(66, 66, 66)v}
 .CardsContainer__pagination{
@@ -157,9 +175,15 @@ main{
         grid-template-columns: 1fr;
         padding: 0;
     }
-    .CardsContainer{ padding: 0 }
-    .CardsContainer__pagination{ margin-bottom: 2em }
+    .DivisorComponent__header{ grid-column: 1 span }
 
+    .CardsContainer{ padding: 0; margin-top: 2em; }
+    .CardsContainer__pagination{ margin-bottom: 2em }
+}
+
+@media screen and (max-width:600px){
+    .DivisorComponent__header{ display: block }
+    .DivisorComponent__order{ margin-top: 1em }
 }
 
 /* -------------------------- CARD */
@@ -228,6 +252,7 @@ main{
     border-radius:0px;
     padding-bottom:10px;
     font-size: 1.15em;
+    margin-top: 0;
 }
 
 .Card--equipment{

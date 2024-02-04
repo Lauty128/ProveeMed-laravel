@@ -6,6 +6,21 @@
 
 <div class="DivisorComponent">
 
+    <div class="DivisorComponent__header">
+        <span><b>{{ $equipments->total() }}</b> Resultados</span>
+        <div class="DivisorComponent__order">
+            <span>Ordenar por </span>
+            <select name="sort" id="sort-input">
+                <option value="1">Codigo: menor a mayor</option>
+                <option value="2">Codigo: mayor a menor</option>
+                <option value="3">Ordenar de A a Z (asc)</option>
+                <option value="4">Ordenar de Z a A (desc)</option>
+                <option value="5">Menor precio (asc)</option>
+                <option value="6">Mayor precio (desc)</option>
+            </select>
+        </div>
+    </div>
+
     @component('components.equipmentFilters', [
         'categories' => $categories
     ])@endcomponent
