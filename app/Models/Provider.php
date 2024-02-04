@@ -18,6 +18,6 @@ class Provider extends Model
     //----> Relations
     public function equipments():BelongsToMany
     {
-        return $this->BelongsToMany(Provider::class, 'provider_equipment');
+        return $this->BelongsToMany(Equipment::class, 'provider_equipment');
     }
 }
