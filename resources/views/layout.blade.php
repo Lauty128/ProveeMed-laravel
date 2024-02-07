@@ -19,5 +19,7 @@
     </main>
 
     @component('components.static.footer') @endcomponent
+
+    <script src="{{ asset('js/index.js') }}"></script>
 </body>
 </html>

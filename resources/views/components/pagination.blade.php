@@ -1,11 +1,11 @@
-<div class="CardsContainer__pagination" aria-pagination="{{ route('providers') }}" aria-current="{{ $paginator->currentPage() }}">
+<div class="CardsContainer__pagination" data-pagination="{{ $route }}" data-current="{{ $paginator->currentPage() }}">
     @if(!$paginator->onFirstPage())
-        <a aria-page="{{ ($paginator->currentPage() - 1) }}"><</a>
+        <a data-page="{{ ($paginator->currentPage() - 1) }}"><</a>
     @endif
     
     @for($i = 2; $i >= 1; $i--)
         @if(($paginator->currentPage() - $i) > 0)
-            <a aria-page="{{ $paginator->currentPage() - $i }}">{{ $paginator->currentPage() - $i }}</a>
+            <a data-page="{{ $paginator->currentPage() - $i }}">{{ $paginator->currentPage() - $i }}</a>
         @endif
     @endfor
 
@@ -13,12 +13,12 @@
     
     @for($i = 1; $i <= 2; $i++)
         @if(($paginator->currentPage() + $i) <= $paginator->lastPage())
-            <a aria-page="{{ $paginator->currentPage() + $i }}">{{ $paginator->currentPage() + $i }}</a>
+            <a data-page="{{ $paginator->currentPage() + $i }}">{{ $paginator->currentPage() + $i }}</a>
         @endif
     @endfor
     
     @if (!$paginator->onLastPage())
-        <a aria-page="{{ $paginator->currentPage() + $i }}">></a>
+        <a data-page="{{ $paginator->currentPage() + 1 }}">></a>
     @endif
 
     <div class="CardsContainer__information">

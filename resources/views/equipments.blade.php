@@ -42,7 +42,9 @@
                 </a>
             @endforeach   
     
-            {{ $equipments->links('components.pagination') }}
+            {{ $equipments->links('components.pagination', [
+                'route' => route('equipments')
+            ]) }}
                 
         @else
             <div class="emptyList" style="display: flex; flex-direction:column; align-items:center; gap:1.5em">
