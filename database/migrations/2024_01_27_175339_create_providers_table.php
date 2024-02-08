@@ -23,7 +23,7 @@ class CreateProvidersTable extends Migration
             $table->string('phone', 40)->nullable();
         //=======> Location
             $table->string('province_id', 10);
-            $table->string('province', 50);
+            $table->string('province', 60);
             $table->string('city_id', 10);
             $table->string('city', 50);
             $table->string('department_id', 10);
