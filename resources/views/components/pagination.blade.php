@@ -1,4 +1,4 @@
-<div class="CardsContainer__pagination" data-pagination="{{ $route }}" data-current="{{ $paginator->currentPage() }}">
+<div class="CardsContainer__pagination" data-current="{{ $paginator->currentPage() }}">
     @if(!$paginator->onFirstPage())
         <a data-page="{{ ($paginator->currentPage() - 1) }}"><</a>
     @endif

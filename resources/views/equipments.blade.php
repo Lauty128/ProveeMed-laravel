@@ -25,7 +25,7 @@
         'categories' => $categories
     ])@endcomponent
 
-    <div class="CardsContainer">
+    <div class="CardsContainer" data-pagination="{{ route('equipments') }}">
         
         <div class='Card Card--header'>
             <span style="color: rgb(66,66,66); textTransform: uppercase">Nombre</span>
@@ -42,9 +42,7 @@
                 </a>
             @endforeach   
     
-            {{ $equipments->links('components.pagination', [
-                'route' => route('equipments')
-            ]) }}
+            {{ $equipments->links('components.pagination') }}
                 
         @else
             <div class="emptyList" style="display: flex; flex-direction:column; align-items:center; gap:1.5em">
