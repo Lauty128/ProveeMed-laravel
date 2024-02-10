@@ -21,6 +21,7 @@ class CreateProvidersTable extends Migration
             $table->string('web', 100)->nullable();
             $table->string('mail', 100)->nullable();
             $table->string('phone', 40)->nullable();
+            $table->boolean('available')->default(true);
         //=======> Location
             $table->string('province_id', 10);
             $table->string('province', 60);
