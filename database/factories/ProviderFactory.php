@@ -25,6 +25,7 @@ class ProviderFactory extends Factory
             'name' => $company_name ,
             'web' => $company_domain,
             'mail' => 'help@'.$company_domain,
+            'available' => $this->faker->randomElement([0,1]),
             'province_id' => $province_id,
             'province' => $provinces[$province_id],
             'department_id' => '00' ,

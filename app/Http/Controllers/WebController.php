@@ -38,7 +38,16 @@ class WebController extends Controller
     //-- PROVIDERS
     public function providers(Request $request)
     {
-        $providers_query = Provider::select('providers.id','providers.name','providers.province_id','providers.province');
+        // Configs
+        $orders = [
+            1 => [ 'field' => 'providers.id', 'type' => 'ASC' ],
+            2 => [ 'field' => 'providers.id', 'type' => 'DESC' ],
+            3 => [ 'field' => 'providers.name', 'type' => 'ASC' ],
+            4 => [ 'field' => 'providers.name', 'type' => 'DESC' ],
+        ];
+
+        $providers_query = Provider::select('providers.id','providers.name','providers.province_id','providers.province')
+                                ->where('providers.available', '1'); // Call only active providers
 
         //----> Config filters of query
         if($request->name){
@@ -54,6 +63,12 @@ class WebController extends Controller
             $providers_query->where('providers.province_id', $request->province);
         }
 
+        //----> Config order 
+        if($request->order && ($request->order >= 1) && ($request->order <= 4)){
+            $order = $orders[$request->order];
+            $providers_query->orderBy($order['field'], $order['type']);
+        }
+
         $providers = $providers_query->paginate(15);
 
         //----> Get data to the filters
@@ -67,6 +82,16 @@ class WebController extends Controller
     //-- EQUIPMENTS
     public function equipments(Request $request)
     {
+        // Configs
+        $orders = [
+            1 => [ 'field' => 'equipments.id', 'type' => 'ASC' ],
+            2 => [ 'field' => 'equipments.id', 'type' => 'DESC' ],
+            3 => [ 'field' => 'equipments.name', 'type' => 'ASC' ],
+            4 => [ 'field' => 'equipments.name', 'type' => 'DESC' ],
+            5 => [ 'field' => 'equipments.price', 'type' => 'ASC' ],
+            6 => [ 'field' => 'equipments.price', 'type' => 'DESC' ],
+        ];
+
         $equipments_query = Equipment::with('category')->select('id','name','category_id','price');
 
         //----> Config filters of query
@@ -75,6 +100,12 @@ class WebController extends Controller
         }
         if($request->category && ($request->category != '-1')){
             $equipments_query->where('category_id', $request->category);
+        }
+
+        //----> Config order 
+        if($request->order && ($request->order >= 1) && ($request->order <= 6)){
+            $order = $orders[$request->order];
+            $equipments_query->orderBy($order['field'], $order['type']);
         }
 
         $equipments = $equipments_query->paginate(15);
