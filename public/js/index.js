@@ -15,7 +15,7 @@ if(document.querySelector('.FilterComponent')){
     const CONFIGS = {
         domain: window.location.origin,
         url: (CardsContainer && CardsContainer.dataset) ? CardsContainer.dataset.pagination : '',
-        page: (PaginationDiv && PaginationDiv.datase) ? PaginationDiv.dataset.current : 0,
+        page: (PaginationDiv && PaginationDiv.dataset) ? PaginationDiv.dataset.current : 0,
         filters: {
             province: queries.get('province') || -1,
             category: queries.get('category') || -1,
