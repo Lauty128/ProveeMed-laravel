@@ -123,3 +123,70 @@ if(document.querySelector('.FilterComponent')){
     //-------------------------------------------------------------------------------------------
     load_initial_filters();
 }
+
+if(document.getElementById('List')){
+    //-------------------------------------------------------------------------------------------
+    //---------------------------------------> Components <--------------------------------------
+    //-------------------------------------------------------------------------------------------
+    const listContainer = document.getElementById('List');
+    const loadMoreButton = document.getElementById('LoadMore');
+    const totalCounter = document.querySelector('#Total b');
+    const Pagination = {
+        url: listContainer.dataset.url,
+        redirect: listContainer.dataset.redirect,
+        page: 0,
+        per_page: 0,
+        total: 0
+    }
+
+    //-------------------------------------------------------------------------------------------
+    //---------------------------------------> Functions <---------------------------------------
+    //-------------------------------------------------------------------------------------------
+
+    async function LoadArticles(data){
+        // const fragment = document.createDocumentFragment();
+        let container = '';
+
+        data.forEach((article) => {
+            const card = `<a class="Card" href="${Pagination.redirect + '/' + article.id}">
+                <span class='Card__id'>#${article.id}</span>
+                <h4 class="Card__h4">${article.name}</h4>
+                <span class="Card__span" title="${article.category.name}">${article.category.name}</span>
+            </a>`
+
+            // fragment.appendChild(card)
+            container += card;
+        })
+        listContainer.innerHTML += container;
+    }
+
+    async function loadMore(){
+        Pagination.page += 1;
+        fetch(Pagination.url + '?page=' + Pagination.page)
+            .then(response => response.json())
+            .then(response => {
+                Pagination.per_page = response.per_page;
+                
+                if(Pagination.total == 0){
+                    Pagination.total = response.total;
+                    totalCounter.textContent = response.total
+                };
+                LoadArticles(response.data);
+
+                if((Pagination.per_page * Pagination.page) >= Pagination.total){
+                    loadMoreButton.style.display = 'none';
+                };        
+            })
+            .catch(err => console.log(err));
+    }
+
+    loadMoreButton.addEventListener('click', (e)=>{
+        e.preventDefault();
+        loadMore();
+    })
+
+    //-------------------------------------------------------------------------------------------
+    //---------------------------------------> Start <-------------------------------------------
+    //-------------------------------------------------------------------------------------------
+    loadMore();
+}

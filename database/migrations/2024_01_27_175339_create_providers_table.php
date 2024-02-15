@@ -18,6 +18,7 @@ class CreateProvidersTable extends Migration
         //=======> Information
             $table->id();
             $table->string('name', 80);
+            $table->string('image', 20)->nullable();
             $table->string('web', 100)->nullable();
             $table->string('mail', 100)->nullable();
             $table->string('phone', 40)->nullable();

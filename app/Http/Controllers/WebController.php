@@ -13,6 +13,7 @@ use App\Models\Equipment;
 use App\Models\Category;
 use App\Models\ProviderEquipment;
 
+
 class WebController extends Controller
 {
     //----------------------------> Local <---------------------------------
@@ -116,5 +117,24 @@ class WebController extends Controller
         //----> Return
         return view('equipments', compact('equipments', 'categories'));
     }
+
+    //-- PROVIDER
+    public function provider(string $id){
+        $provider = Provider::find($id);
+        if(!$provider) return redirect(route('not-found'), 404);
+
+        // Get categories what the provider sales
+        $categories = DB::table('categories', 'c')
+            ->select(['c.id', 'c.name'])
+            ->join('equipments', 'c.id', 'equipments.category_id')
+            ->join('provider_equipment', 'equipments.id', 'provider_equipment.equipment_id')
+            ->where('provider_equipment.provider_id', $id)
+            ->distinct()
+            ->get();
+
+        return view('provider', compact('provider', 'categories'));
+    }
+
+    
     
 }

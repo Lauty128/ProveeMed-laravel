@@ -38,7 +38,7 @@ class ProvincesServiceProvider extends ServiceProvider
                 "14" =>"Córdoba",
                 "06" =>"Buenos Aires",
                 "42" =>"La Pampa",
-                "94" =>"Tierra del Fuego, Antártida e Islas del Atlántico Sur"
+                "94" =>"Tierra del Fuego"
             ];
         });
     }
