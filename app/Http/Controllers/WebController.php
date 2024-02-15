@@ -121,7 +121,7 @@ class WebController extends Controller
     //-- PROVIDER
     public function provider(string $id){
         $provider = Provider::find($id);
-        if(!$provider) return redirect(route('not-found'), 404);
+        if(!$provider) return redirect()->route('not-found');
 
         // Get categories what the provider sales
         $categories = DB::table('categories', 'c')
