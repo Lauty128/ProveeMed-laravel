@@ -135,6 +135,14 @@ class WebController extends Controller
         return view('provider', compact('provider', 'categories'));
     }
 
+    //-- PROVIDER
+    public function equipment(string $id){
+        $equipment = Equipment::find($id);
+        if(!$equipment) return redirect()->route('not-found');
+
+        return view('equipment', compact('equipment'));
+    }
+
     
     
 }

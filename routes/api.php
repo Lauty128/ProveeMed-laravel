@@ -20,3 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/proveedores/{id}/equipos', [ApiController::class, 'equipments_of_provider'])->name('equipments-of-provider');
+Route::get('/equipos/{id}/proveedores', [ApiController::class, 'providers_of_equipment'])->name('providers-of-equipment');

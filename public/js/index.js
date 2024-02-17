@@ -148,10 +148,11 @@ if(document.getElementById('List')){
         let container = '';
 
         data.forEach((article) => {
+            const data = (article.category) ? article.category.name : article.province;
             const card = `<a class="Card" href="${Pagination.redirect + '/' + article.id}">
                 <span class='Card__id'>#${article.id}</span>
                 <h4 class="Card__h4">${article.name}</h4>
-                <span class="Card__span" title="${article.category.name}">${article.category.name}</span>
+                <span class="Card__span" title="${data}">${data}</span>
             </a>`
 
             // fragment.appendChild(card)

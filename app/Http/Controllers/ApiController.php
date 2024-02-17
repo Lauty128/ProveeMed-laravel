@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 //----> Models
 use App\Models\Equipment;
-
+use App\Models\Provider;
 
 class ApiController extends Controller
 {
@@ -19,6 +19,16 @@ class ApiController extends Controller
             ->select('id','name','price','category_id')
             ->join('provider_equipment', 'provider_equipment.equipment_id', 'equipments.id')
             ->where('provider_equipment.provider_id', $id) 
+            ->paginate(10);
+            
+        return response()->json($equipments);
+    }
+
+    public function providers_of_equipment(string $id, Request $request)
+    {
+        $equipments = Provider::select('id','name','province', 'province_id')
+            ->join('provider_equipment', 'provider_equipment.provider_id', 'providers.id')
+            ->where('provider_equipment.equipment_id', $id) 
             ->paginate(10);
             
         return response()->json($equipments);
