@@ -20,8 +20,8 @@
 
     <p class="Local-p" style=" margin-top:2em">
         Haz {{' '}}
-        <a href="#">click aquí</a>
-        {{' '}}para respaldar tus datos y asegurar una gestión sin contratiempos!
+        <a href="{{ route('dashboard') }}">click aquí</a>
+        {{' '}}para ingresar en el panel administrativo!
     </p>
 
     <style>
