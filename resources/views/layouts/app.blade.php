@@ -28,10 +28,25 @@
                 </header>
             @endif
 
+            @if (Session('success'))
+                <div id="AlertCard" class="w-full mb-2 select-none border-l-4 border-green-400 bg-green-100 p-4 font-medium hover:border-green-500">{{ Session('success') }}</div>
+            @endif
+            @if (Session('error'))
+                <div id="AlertCard" class="hover:red-yellow-500 w-full mb-2 select-none border-l-4 border-red-400 bg-red-100 p-4 font-medium">{{ Session('error') }}</div>
+            @endif
+
             <!-- Page Content -->
             <main>
                 {{ $slot }}
             </main>
         </div>
     </body>
+
+    <script>
+        if(document.getElementById('AlertCard')){
+            setTimeout(() => {
+                document.getElementById('AlertCard').style.display = 'none';
+            }, 2000);
+        }
+    </script>
 </html>
