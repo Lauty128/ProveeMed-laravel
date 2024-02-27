@@ -47,6 +47,8 @@
                     </div>
                     
                     <div>
+                        <p>Si la provincia es ciudad autonoma de buenos aires (02), entonces la ciudad no deberia tener opcion de seleccion y en la base de datos la ciudad deberia ser nula</p>
+                        <p>Deberian tener opcion de no marcar una ciudad</p>
                         <label for="" class="text-gray-600">Ciudad</label>
                         <select id="CityOptionTag" class="border p-2 rounded w-full" name="city" data-current="{{$provider->city_id}}">
                             <option value="1">1</option>
