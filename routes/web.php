@@ -47,12 +47,34 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    //----> Profile
+    Route::get('/perfil', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/dashboard/providers', [DashboardController::class, 'providers_list'])->name('dashboard.providers');
-    Route::get('/dashboard/equipments', [DashboardController::class, 'equipments_list'])->name('dashboard.equipments');
+    //----> Providers
+    // GET
+    Route::get('/dashboard/proveedores', [DashboardController::class, 'providers_list'])->name('dashboard.providers');
+    Route::get('/dashboard/proveedores/{id}/editar', [DashboardController::class, 'provider_update_page'])->name('dashboard.providers.update--page');
+    Route::get('/dashboard/proveedores/agregar', [DashboardController::class, 'provider_create_page'])->name('dashboard.providers.create--page');
+    // POST
+    Route::post('/dashboard/proveedores/nuevo', [DashboardController::class, 'provider_create'])->name('dashboard.providers.create');
+    // PUT
+    Route::put('/dashboard/proveedores/{id}/editar', [DashboardController::class, 'provider_update'])->name('dashboard.providers.update');
+    // DELETE
+    Route::delete('/dashboard/proveedores/{id}/eliminar', [DashboardController::class, 'delete_provider'])->name('dashboard.providers.delete');
+
+    //----> Equipments
+    // GET
+    Route::get('/dashboard/equipos', [DashboardController::class, 'equipments_list'])->name('dashboard.equipments');
+    Route::get('/dashboard/equipos/{id}/editar', [DashboardController::class, 'equipments_update_page'])->name('dashboard.equipments.update--page');
+    Route::get('/dashboard/equipos/agregar', [DashboardController::class, 'equipments_create_page'])->name('dashboard.equipments.create--page');
+    // POST
+    Route::post('/dashboard/equipos/nuevo', [DashboardController::class, 'equipments_create'])->name('dashboard.equipments.create');
+    // PUT
+    Route::put('/dashboard/equipos/{id}/editar', [DashboardController::class, 'equipments_update'])->name('dashboard.equipments.update');
+    // DELETE
+    Route::delete('/dashboard/equipos/{id}/eliminar', [DashboardController::class, 'delete_equipment'])->name('dashboard.equipments.delete');
 });
 
 require __DIR__.'/auth.php';
