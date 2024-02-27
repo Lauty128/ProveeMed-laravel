@@ -34,6 +34,14 @@ class DashboardController extends Controller
         return view('dashboard.providers', compact('providers', 'queries'));
     }
 
+    public function provider_update_page(string $id){
+        
+        $provider = Provider::find($id);
+        $provinces = App('provinces');
+
+        return view('dashboard.edit.provider', compact('provider', 'provinces'));
+    }
+
     public function delete_provider($id){
         $provider = Provider::find($id);
 
