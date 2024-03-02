@@ -36,7 +36,7 @@
                   <tr>
                     <th scope="col" class="px-6 py-4 font-medium text-gray-900">Nombre</th>
                     <th scope="col" class="px-6 py-4 font-medium text-gray-900">Estado</th>
-                    <th scope="col" class="px-6 py-4 font-medium text-gray-900">Provincia</th>
+                    <th scope="col" class="px-6 py-4 font-medium text-gray-900 hidden sm:table-cell">Provincia</th>
                     <th scope="col" class="px-6 py-4 font-medium text-gray-900"></th>
                   </tr>
                 </thead>
@@ -70,7 +70,7 @@
                         @endif
                       
                     </td>
-                    <td class="px-6 py-4">{{ $provider->province }}</td>
+                    <td class="px-6 py-4 hidden sm:table-cell">{{ $provider->province }}</td>
                     
                     <td class="px-6 py-4">
                       <div class="flex justify-end gap-4">
