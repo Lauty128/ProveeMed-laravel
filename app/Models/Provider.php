@@ -13,6 +13,20 @@ class Provider extends Model
     use HasFactory;
 
     protected $table = 'providers';
+    protected $fillable = [
+        'name',
+        'image',
+        'web',
+        'mail',
+        'phone',
+        'province_id',
+        'province',
+        'city_id',
+        'city',
+        'department_id',
+        'department',
+        'address'
+    ];
 
 
     //----> Relations

@@ -17,8 +17,8 @@ class CreateProvidersTable extends Migration
         {
         //=======> Information
             $table->id();
-            $table->string('name', 80);
-            $table->string('image', 20)->nullable();
+            $table->string('name', 50);
+            $table->string('image', 15)->nullable();
             $table->string('web', 100)->nullable();
             $table->string('mail', 100)->nullable();
             $table->string('phone', 40)->nullable();
@@ -28,7 +28,8 @@ class CreateProvidersTable extends Migration
             $table->string('province', 60);
             $table->string('city_id', 10);
             $table->string('city', 50);
-            $table->string('department_id', 10);
+            $table->string('department', 60)->nullable();
+            $table->string('department_id', 10)->nullable();
             $table->string('address', 100)->nullable();
         //=======> Others
             $table->timestamps();
