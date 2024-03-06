@@ -172,6 +172,7 @@ return [
         'district'                 => 'distrito',
         'duration'                 => 'duración',
         'email'                    => 'correo electrónico',
+        'mail'                    => 'correo electrónico',
         'excerpt'                  => 'extracto',
         'filter'                   => 'filtro',
         'first_name'               => 'nombre',
@@ -232,5 +233,7 @@ return [
         'user'                     => 'usuario',
         'username'                 => 'usuario',
         'year'                     => 'año',
+        'department'               => 'departamento',
+        'web'               => 'sitio web',
     ],
 ];
