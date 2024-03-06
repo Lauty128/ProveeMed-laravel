@@ -8,7 +8,7 @@
     <a class="Information__goBack" href="{{ route('providers') }}">←  Volver a proveedores</a>
     <div class="Information__header">
         <div class="Information__image">
-            <img src="{{ $provider->image ?? asset('/img/not-found.png') }}" alt="">
+            <img src="{{ $provider->image ? asset('/storage/images/providers/'.$provider->image) : asset('/img/not-found.png') }}" alt="">
         </div>
         <div>
             <span style="color: #6e6e6e">#{{ $provider->id }}</span>
