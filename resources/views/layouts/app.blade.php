@@ -6,7 +6,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         
         {{-- <title>{{ config('app.name', 'Laravel') }}</title> --}}
-        <title>ProveeMed</title>
+        <title>ProveeMed | Panel administrativo</title>
         <link rel="shortcut icon" href="{{ asset('img/icon.png') }}" type="image/png">
 
         <!-- Fonts -->
