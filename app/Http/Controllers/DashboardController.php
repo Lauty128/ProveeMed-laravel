@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 //----> Dependencies
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Validator;
 
 //----> Models
 use App\Models\Provider;
@@ -40,6 +41,68 @@ class DashboardController extends Controller
         $provinces = App('provinces');
 
         return view('dashboard.edit.provider', compact('provider', 'provinces'));
+    }
+
+    public function provider_create_page()
+    {
+        $provinces = App('provinces');
+
+        return view('dashboard.create.providers', compact('provinces'));
+    }
+
+    public function provider_create(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'string|required|max:50',
+            'image' => 'image|nullable|max:500',
+            'web' => 'string|nullable|max:100',
+            'mail' => 'email|nullable|max:100',
+            'phone' => 'string|nullable|max:40',
+            'province' => 'string|required',
+            'department' => 'string|nullable',
+            'city' => 'string|required',
+            'address' => 'string|nullable|max:100'
+        ]);
+        
+        if($validator->fails()){
+            return redirect()
+                    ->route('dashboard.providers.create--page')
+                    ->withInput()  // This is to use the global function old() in the blade.php file
+                    ->withErrors($validator);
+        };
+
+        //-----------> Configs
+        $provinces = App::make('provinces');
+        $province_name = $provinces[$request->province];
+        $department = null;
+
+        if($request->department) $department = explode('-', $request->department);
+        $city = explode('-', $request->city);
+
+        //-----------> Store images
+        $image_name = null;
+        $directory = 'public/images/providers';
+        if($request->hasFile('image')){
+            $image_name = time().'.'.$request->file('image')->extension();
+            $request->file('image')->storeAs($directory, $image_name);
+        };
+
+        Provider::create([
+            'name' => $request->name,
+            'image' => $image_name,
+            'web' => $request->web,
+            'phone' => $request->phone,
+            'mail' => $request->mail,
+            'province_id' => $request->province,
+            'province' => $province_name,
+            'department_id' => ($department) ? $department[0] : null,
+            'department' => ($department) ? $department[1] : null,
+            'city_id' => $city[0],
+            'city' => $city[1],
+            'address' => $request->address
+        ]);
+
+        return redirect()->route('dashboard.providers')->with('success', 'Nuevo proveedor agregado correctamente');
     }
 
     public function delete_provider($id){
