@@ -41,7 +41,7 @@
                 <h3>Equipos con los que trabaja</h3>
                 <span id="Total">Total <b></b></span>
             </div>
-            <div id="List" class="Information__listContainer" data-url="{{ route('providers-of-equipment', ['id' => $equipment->id]) }}" data-redirect="{{ route('providers') }}">
+            <div id="List" class="Information__listContainer" data-url="{{ route('api.providers-of-equipment', ['id' => $equipment->id]) }}" data-redirect="{{ route('providers') }}">
 
             </div>
             <button id="LoadMore" class="Information__loadList">
