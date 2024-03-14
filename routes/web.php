@@ -57,10 +57,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard/proveedores', [DashboardController::class, 'providers_list'])->name('dashboard.providers');
     Route::get('/dashboard/proveedores/{id}/editar', [DashboardController::class, 'provider_update_page'])->name('dashboard.providers.update--page');
     Route::get('/dashboard/proveedores/agregar', [DashboardController::class, 'provider_create_page'])->name('dashboard.providers.create--page');
+    Route::get('/dashboard/proveedores/{id}/editar/ubicacion', [DashboardController::class, 'provider_location_update_page'])->name('dashboard.providers_location.update--page');
     // POST
     Route::post('/dashboard/proveedores/nuevo', [DashboardController::class, 'provider_create'])->name('dashboard.providers.create');
     // PUT
     Route::put('/dashboard/proveedores/{id}/editar', [DashboardController::class, 'provider_update'])->name('dashboard.providers.update');
+    Route::put('/dashboard/proveedores/{id}/editar/ubicacion', [DashboardController::class, 'provider_location_update'])->name('dashboard.providers_location.update');
     // DELETE
     Route::delete('/dashboard/proveedores/{id}/eliminar', [DashboardController::class, 'delete_provider'])->name('dashboard.providers.delete');
 
