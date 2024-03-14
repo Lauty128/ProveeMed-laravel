@@ -53,7 +53,7 @@
                       </div>
                       <div class="text-sm">
                         <div class="font-medium text-sm">#{{ $provider->id }}</div>
-                        <div class="text-gray-800 text-base">{{ $provider->name }}</div>
+                        <div class="text-gray-800 text-base"><a class="font-bold hover:underline hover:text-blue-500" href="{{ route('provider', ['id'=>$provider->id]) }}">{{ $provider->name }}</a></div>
                       </div>
                     </th>
                     <td class="px-6 py-4">
