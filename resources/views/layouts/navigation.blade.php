@@ -21,6 +21,9 @@
                     <x-nav-link :href="route('dashboard.equipments')" :active="request()->routeIs('dashboard.equipments')">
                         Equipos
                     </x-nav-link>
+                    <x-nav-link :href="route('dashboard.categories')" :active="request()->routeIs('dashboard.categories')">
+                        Categorias
+                    </x-nav-link>
                 </div>
             </div>
 
