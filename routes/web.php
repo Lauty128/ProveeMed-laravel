@@ -75,6 +75,18 @@ Route::middleware('auth')->group(function () {
     Route::put('/dashboard/equipos/{id}/editar', [DashboardController::class, 'equipments_update'])->name('dashboard.equipments.update');
     // DELETE
     Route::delete('/dashboard/equipos/{id}/eliminar', [DashboardController::class, 'delete_equipment'])->name('dashboard.equipments.delete');
+
+    //----> Categories
+    // GET
+    Route::get('/dashboard/categorias', [DashboardController::class, 'categories_list'])->name('dashboard.categories');
+    Route::get('/dashboard/categorias/{id}/editar', [DashboardController::class, 'categories_update_page'])->name('dashboard.categories.update--page');
+    Route::get('/dashboard/categorias/agregar', [DashboardController::class, 'categories_create_page'])->name('dashboard.categories.create--page');
+    // POST
+    Route::post('/dashboard/categorias/nuevo', [DashboardController::class, 'categories_create'])->name('dashboard.categories.create');
+    // PUT
+    Route::put('/dashboard/categorias/{id}/editar', [DashboardController::class, 'categories_update'])->name('dashboard.categories.update');
+    // DELETE
+    Route::delete('/dashboard/categorias/{id}/eliminar', [DashboardController::class, 'categories_delete'])->name('dashboard.categories.delete');
 });
 
 require __DIR__.'/auth.php';

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 //----> Dependencies
+
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Validator;
@@ -25,6 +27,7 @@ class DashboardController extends Controller
     ██║░░░░░░██║░░██║░╚█████╔╝░░░╚██╔╝░░░██║░██████╔╝░███████╗░██║░░██║░██████╔╝
     ╚═╝░░░░░░╚═╝░░╚═╝░░╚════╝░░░░░╚═╝░░░░╚═╝░╚═════╝░░╚══════╝░╚═╝░░╚═╝░╚═════╝░
     */
+    
     public function providers_list(Request $request){
         $providers = new Provider();
         if($request->search) $providers = $providers->where('name', 'like', '%'.$request->search.'%');
@@ -139,4 +142,97 @@ class DashboardController extends Controller
 
         return redirect()->route('dashboard.equipments')->with('success', 'Equipo eliminado correctamente');
     }
+
+    /*
+    
+    ░█████╗░░█████╗░████████╗███████╗░██████╗░░█████╗░██████╗░██╗███████╗░██████╗
+    ██╔══██╗██╔══██╗╚══██╔══╝██╔════╝██╔════╝░██╔══██╗██╔══██╗██║██╔════╝██╔════╝
+    ██║░░╚═╝███████║░░░██║░░░█████╗░░██║░░██╗░██║░░██║██████╔╝██║█████╗░░╚█████╗░
+    ██║░░██╗██╔══██║░░░██║░░░██╔══╝░░██║░░╚██╗██║░░██║██╔══██╗██║██╔══╝░░░╚═══██╗
+    ╚█████╔╝██║░░██║░░░██║░░░███████╗╚██████╔╝╚█████╔╝██║░░██║██║███████╗██████╔╝
+    ░╚════╝░╚═╝░░╚═╝░░░╚═╝░░░╚══════╝░╚═════╝░░╚════╝░╚═╝░░╚═╝╚═╝╚══════╝╚═════╝░
+    */
+    
+    public function categories_list(Request $request){
+        $categories = Category::all();
+    
+        return view('dashboard.categories', compact('categories'));
+    }
+    
+    public function categories_update_page(string $id){
+        $category = Category::find($id);
+    
+        return view('dashboard.edit.categories', compact('category'));
+    }
+    
+    public function categories_create_page()
+    {
+        return view('dashboard.create.categories');
+    }
+    
+    public function categories_create(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'string|required|max:40',
+            'description' => 'string|nullable|max:300',
+        ]);
+        
+        if($validator->fails()){
+            return redirect()
+                    ->route("dashboard.categories.create--page")
+                    ->withInput()  // This is to use the global function old() in the blade.php file
+                    ->withErrors($validator);
+        };
+    
+        Category::create([
+            'name' => $request->name,
+            'description' => $request->description
+        ]);
+    
+        return redirect()->route("dashboard.categories")->with('success', 'Nueva categoria agregada correctamente');
+    }
+
+    public function categories_update(Request $request, string $id)
+    {
+        $category = Category::find($id);
+        if(!$category){
+            return redirect()
+                    ->route("dashboard.categories")
+                    ->with("error", "No se encontró la categoria a editar");
+        }
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'string|required|max:40',
+            'description' => 'string|nullable|max:250',
+        ]);
+        
+        if($validator->fails()){
+            return redirect()
+                    ->route("dashboard.categories.update--page", ["id" => $category->id])
+                    ->withErrors($validator);
+        };
+    
+        $category->update([
+            'name' => $request->name,
+            'description' => $request->description
+        ]);
+    
+        return redirect()->route("dashboard.categories")->with('success', 'Elemento modificado correctamente');
+    }
+    
+    public function categories_delete($id){
+        $category = Category::find($id);
+    
+        if(!$category){
+            return redirect()
+                    ->route("dashboard.categories")
+                    ->with("error", "No se encontró la categoria a eliminar");
+        }
+        $category->delete();
+    
+        return redirect()->route('dashboard.categories')->with('success', 'Categoria eliminada correctamente');
+    }
+
+
+
 }
