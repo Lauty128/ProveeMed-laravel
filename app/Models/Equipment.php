@@ -15,6 +15,8 @@ class Equipment extends Model
 
     protected $table = 'equipments';
 
+    protected $guarded = [];
+
     //----> Relations
     public function providers():BelongsToMany
     {

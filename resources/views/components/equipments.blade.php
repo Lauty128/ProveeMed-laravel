@@ -52,7 +52,7 @@
                     </div>
                     <div class="text-sm">
                       <div class="font-medium text-sm">#{{ $equipment->id }}</div>
-                      <div class="text-gray-800 text-base"><a class="font-bold hover:underline hover:text-blue-500" href="{{ route('equipment', ['id'=>$equipment->id]) }}">{{ $equipment->name }}</a></div>
+                      <div class="text-gray-800 text-base">{{ $equipment->name }}</div>
                     </div>
                   </th>
                   

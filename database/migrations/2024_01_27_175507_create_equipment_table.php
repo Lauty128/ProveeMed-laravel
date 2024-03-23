@@ -17,12 +17,12 @@ class CreateEquipmentTable extends Migration
         {
         //=======> Information
             $table->id();
-            $table->string('name');
+            $table->string('name',60);
             $table->unsignedBigInteger('category_id');
-            $table->string('umdns')->nullable();
-            $table->string('image', 150)->nullable();
+            $table->string('umdns',10)->nullable();
+            $table->string('image', 20)->nullable();
             $table->string('description', 300)->nullable();
-            $table->string('specifications', 30)->nullable();
+            $table->string('specifications', 20)->nullable();
             $table->integer('price')->nullable();
         //=======> Others 
             $table->timestamps();

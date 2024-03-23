@@ -227,6 +227,68 @@ class DashboardController extends Controller
         return view('dashboard.equipments' , compact('equipments'));
     }
 
+    public function equipments_create_page(){
+        
+        $categories = Category::all();
+
+        return view('dashboard.create.equipments', compact('categories'));
+    }
+
+    public function equipments_update_page(string $id){
+        
+        $equipment = Equipment::find($id);
+        $categories = Category::all();
+
+        return view('dashboard.edit.equipment', compact('equipment', 'categories'));
+    }
+
+    public function equipments_create(Request $request){
+        $validator = Validator::make($request->all(), [
+            'name' => 'string|required|max:60',
+            'category_id' => 'integer|required',
+            'image' => 'image|nullable|max:500',
+            'umdns' => 'string|nullable|max:10',
+            'description' => 'string|nullable|max:300',
+            'specifications' => 'file|nullable|max:10000',
+            'price' => 'integer|nullable',
+        ]);
+        
+        if($validator->fails()){
+            return redirect()
+                    ->route('dashboard.equipments.create--page')
+                    ->withInput()  // This is to use the global function old() in the blade.php file
+                    ->withErrors($validator);
+        };
+
+        //-----------> Store images
+        $image_name = null;
+        $directory = 'public/images/equipments';
+        if($request->hasFile('image')){
+            $image_name = time().'.'.$request->file('image')->extension();
+            $request->file('image')->storeAs($directory, $image_name);
+        };
+
+        //-----------> Speficications file
+        $specification_name = null;
+        $directory = 'public/images/equipments/specifications';
+        if($request->hasFile('specifications')){
+            $specification_name = time().'.'.$request->file('specifications')->extension();
+            $request->file('specifications')->storeAs($directory, $specification_name);
+        };
+
+        Equipment::create([
+            'name'   => $request->name,
+            'image' => $image_name,
+            'category_id' => $request->category_id,
+            'umdns' => $request->umdns,
+            'description' => $request->description,
+            'specifications' => $specification_name,
+            'price' => $request->price,
+        ]);
+
+        return redirect()->route('dashboard.equipments')->with('success', 'Nuevo equipo agregado correctamente');
+    }
+
     public function delete_equipment($id){
         $equipment = Equipment::find($id);
 
